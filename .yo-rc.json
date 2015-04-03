@@ -1,19 +1,19 @@
 {
   "generator-jhipster": {
     "baseName": "socialjukeboxweb",
-    "packageName": "org.sauterelles.jukeboxweb",
-    "packageFolder": "org/sauterelles/jukeboxweb",
+    "packageName": "org.sauterelle.socialjukebox",
+    "packageFolder": "org/sauterelle/socialjukebox",
     "authenticationType": "session",
     "hibernateCache": "no",
     "clusteredHttpSession": "no",
     "websocket": "no",
     "databaseType": "sql",
-    "devDatabaseType": "h2Memory",
-    "prodDatabaseType": "mysql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
     "useCompass": false,
     "buildTool": "maven",
     "frontendBuilder": "grunt",
     "javaVersion": "7",
-    "rememberMeKey": "6508d2cf108b825b6d964d44a5f41aceeadfd40a"
+    "rememberMeKey": "c5f7fe38a8bcb4befe47c7b58e17f9399649871c"
   }
 }
