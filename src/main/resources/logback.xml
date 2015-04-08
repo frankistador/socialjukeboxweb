@@ -27,7 +27,7 @@
     </appender>
 -->
 
-    <logger name="org.sauterelles.jukeboxweb" level="${logback.loglevel}"/>
+    <logger name="org.sauterelle.socialjukebox" level="${logback.loglevel}"/>
 
     <logger name="javax.activation" level="WARN"/>
     <logger name="javax.mail" level="WARN"/>

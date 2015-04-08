@@ -116,4 +116,8 @@ Desktop.ini
 *.*~
 *~
 .merge_file*
+
 /target/
+
+
+/src/main/resources/config/application-dev.yml
