@@ -1,0 +1,125 @@
+<div>
+
+    <h2 translate="socialjukeboxwebApp.playlist.home.title">Playlist</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#savePlaylistModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="socialjukeboxwebApp.playlist.home.createLabel">Create a new Playlist</span>
+    </button>
+    <div class="modal fade" id="savePlaylistModal" tabindex="-1" role="dialog" aria-labelledby="myPlaylistLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myPlaylistLabel" translate="socialjukeboxwebApp.playlist.home.createOrEditLabel">Create or edit a Playlist</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="playlist.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="socialjukeboxwebApp.playlist.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="playlist.name" required ng-minlength="5" ng-maxlength="20">
+
+                            <div ng-show="editForm.name.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                                    This field is required to be at least 5 characters.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                                    This field cannot be longer than 20 characters.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="socialjukeboxwebApp.playlist.song">song</label>
+                            <select class="form-control" multiple name="song" ng-model="playlist.songs" ng-options="song as song.name for song in songs track by song.id">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePlaylistConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(playlist.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="socialjukeboxwebApp.playlist.delete.question" translate-values="{id: '{{playlist.id}}'}">Are you sure you want to delete this Playlist?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="socialjukeboxwebApp.playlist.name">Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="playlist in playlists">
+                    <td><a ui-sref="playlistDetail({id:playlist.id})">{{playlist.id}}</a></td>
+                    <td>{{playlist.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="playlistDetail({id:playlist.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(playlist.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(playlist.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

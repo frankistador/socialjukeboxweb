@@ -1,0 +1,19 @@
+{
+    "socialjukeboxwebApp": {
+        "playlist" : {
+            "home": {
+                "title": "Playlists",
+                "createLabel": "Create a new Playlist",
+                "createOrEditLabel": "Create or edit a Playlist"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Playlist {{ id }}?"
+            },
+            "detail": {
+                "title": "Playlist"
+            },
+            "name": "Name",
+            "song": "song"
+        }
+    }
+}
