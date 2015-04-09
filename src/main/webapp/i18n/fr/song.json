@@ -1,0 +1,22 @@
+{
+    "socialjukeboxwebApp": {
+        "song" : {
+            "home": {
+                "title": "Songs",
+                "createLabel": "Créer un nouveau Song",
+                "createOrEditLabel": "Créer ou éditer un Song"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Song {{ id }} ?"
+            },
+            "detail": {
+                "title": "Song"
+            },
+            "name": "Name",
+            "url": "Url",
+            "artist": "Artist",
+            "playlist": "playlist"
+        }
+    }
+}
+

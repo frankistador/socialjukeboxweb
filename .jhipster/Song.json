@@ -1,0 +1,53 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "playlist",
+            "relationshipNameCapitalized": "Playlist",
+            "relationshipFieldName": "playlist",
+            "otherEntityName": "playlist",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "Playlist",
+            "ownerSide": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "url",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Url",
+            "fieldNameUnderscored": "url",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "artist",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Artist",
+            "fieldNameUnderscored": "artist",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150409151246",
+    "pagination": "no",
+    "validation": true
+}

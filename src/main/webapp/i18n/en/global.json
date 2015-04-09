@@ -6,6 +6,8 @@
             "home": "Home",
             "entities": {
                 "main": "Entities",
+                "song": "Song",
+                "playlist": "Playlist",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {
