@@ -1,0 +1,9 @@
+{
+    "addSong": {
+        "title": "Ajouter une chanson",
+        "form": {
+            "title": "Titre de la chanson",
+            "button" : "Envoyer"
+         }
+    }
+}

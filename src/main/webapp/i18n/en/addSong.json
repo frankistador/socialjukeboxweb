@@ -1,0 +1,9 @@
+{
+    "addSong": {
+        "title": "Add song",
+        "form": {
+            "title": "Song title",
+            "button": "Send"
+        }
+    }
+}
