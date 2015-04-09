@@ -17,6 +17,27 @@
                         <span translate="global.menu.home">Home</span>
                     </a>
                 </li>
+				
+				<!-- MENU application -->
+				<li ng-class="{active: $state.includes('application')}" class="dropdown pointer">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <span>
+							<span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-tablet"> Application </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+					
+					<ul class="dropdown-menu">
+						<li ui-sref-active="active" ng-switch-when="false">
+							<a ui-sref="addSong">
+								<span>Ajouter une chanson</span>
+							</a>
+						</li>
+                    </ul>
+					
+                </li>
+				
                 <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                                 <span>
