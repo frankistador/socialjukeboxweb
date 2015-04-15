@@ -22,5 +22,26 @@ angular.module('socialjukeboxwebApp')
                         return $translate.refresh();
                     }]*/
                 }
-            });
+            })
+        .state('userPlaylist', {
+            parent: 'application',
+            url: '/playlists/:id',
+            data: {
+                roles: [],
+                pageTitle : 'userPlaylist.title'
+
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'scripts/app/application/playlists/userPlaylist.html',
+                    controller: 'userPlaylistController'
+                }
+            },
+            resolve: {
+                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    $translatePartialLoader.addPart('userPlaylist');
+                    return $translate.refresh();
+                }]
+            }
+        });
     });
