@@ -5,7 +5,7 @@ angular.module('socialjukeboxwebApp')
         $stateProvider
             .state('userPlaylist', {
                 parent: 'application',
-                url: '/userPlaylist',
+                url: '/userPlaylist/:id',
                 data: {
                     roles: [],
                     pageTitle : 'userPlaylist.title'
