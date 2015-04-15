@@ -1,7 +1,9 @@
 package org.sauterelle.socialjukebox.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+
 import org.apache.commons.lang.StringUtils;
+import org.sauterelle.socialjukebox.service.LastFmService;
 import org.sauterelle.socialjukebox.service.SubmissionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,8 @@ public class SubmissionResource {
     private final Logger log = LoggerFactory.getLogger(SubmissionResource.class);
     @Inject
     private SubmissionService submissionService;
+    @Inject
+    private LastFmService lastFmService;
     /**
      * POST  /submission/submit -> get a string submitted
      */
@@ -36,5 +40,15 @@ public class SubmissionResource {
         submissionService.submit(name);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @RequestMapping(value = "/submission/test",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @Timed
+    public String test() {
+    	log.debug("Get method on submission test");
+    	return lastFmService.search("");
+    }
+
 
 }
