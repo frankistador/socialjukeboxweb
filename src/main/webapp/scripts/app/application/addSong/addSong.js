@@ -7,7 +7,7 @@ angular.module('socialjukeboxwebApp')
                 parent: 'application',
                 url: '/addSong',
                 data: {
-                    roles: [],
+                    roles: ['ROLE_USER'],
                     pageTitle : 'addSong.title'
                 },
                 views: {
