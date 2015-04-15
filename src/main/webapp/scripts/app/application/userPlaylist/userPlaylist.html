@@ -4,9 +4,10 @@
             <h1 translate="userPlaylist.title">Playlist {{urlParam}} </h1>
 
             <table ng-table="tableParams" class="table">
-                <tr ng-repeat="song in $data">
-                    <td data-title="'Chanson'">{{song.title}}</td>
+                <tr ng-repeat="song in songs">
+                    <td data-title="'Chanson'">{{song.name}}</td>
                     <td data-title="'Artiste'">{{song.artist}}</td>
+                     
                 </tr>
             </table>
         </div>
