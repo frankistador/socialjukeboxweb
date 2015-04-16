@@ -2,7 +2,8 @@
     "userPlaylist": {
         "title": "Playlist",
         "form": {
-            "title": "Titre de la playlist"
+            "title": "Titre de la chanson",
+            "button" : "Envoyer"
         }
     }
 }
