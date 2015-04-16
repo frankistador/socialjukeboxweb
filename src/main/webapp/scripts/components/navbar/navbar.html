@@ -19,7 +19,8 @@
                 </li>
 				
 				<!-- MENU application -->
-				<li ng-class="{active: $state.includes('application')}" class="dropdown pointer">
+
+				<li ui-sref-active="active" class="dropdown pointer" ng-switch-when="true">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <span>
 							<span class="glyphicon glyphicon-user"></span>
@@ -29,11 +30,11 @@
                     </a>
 					
 					<ul class="dropdown-menu">
-						<li ui-sref-active="active" ng-switch-when="false">
+						<li ui-sref-active="active">
 							<a ui-sref="addSong">
 								<span>Ajouter une chanson</span>
 							</a>
-                            <a ui-sref="userPlaylist">
+                            <a ui-sref="playlists">
                                 <span>Voir une playlist</span>
                             </a>
 						</li>
