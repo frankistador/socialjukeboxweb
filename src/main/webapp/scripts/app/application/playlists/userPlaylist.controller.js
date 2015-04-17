@@ -48,8 +48,7 @@ angular.module('socialjukeboxwebApp').
     		  error(function(data, status, headers, config) {
     			  $scope.error=true;
     			  $scope.title=""; 
-    		  });
-    		
+    		  }); 
     		
     	}
     	
