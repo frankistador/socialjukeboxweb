@@ -2,7 +2,8 @@
     "userPlaylist": {
         "title": "Playlist",
         "form": {
-            "title": "Playlist title"
+            "title": "Song title",
+            "button": "Send"
         }
     }
 }

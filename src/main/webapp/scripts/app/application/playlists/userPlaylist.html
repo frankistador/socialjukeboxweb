@@ -1,8 +1,27 @@
 <div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>{{playlistName}} </h1>
-
+           
+            <h1 class="title">{{playlistName}} </h1>
+            
+			<div class="addPanel">
+		    
+			    <div ng-show="success" class="alert alert-success" role="alert">Chanson "{{submittedSong}}" envoyée.</div>
+					
+				<div ng-show="error" class="alert alert-danger" role="alert">Veuillez saisir un titre dans le champ</div>
+						
+			     <form class="form"> 
+						
+							<label for="title" translate="userPlaylist.form.title">Saisir un nom de chanson : </label>
+							<input ng-model="title" type="text" name="title" id="title" size="40" />
+							
+							<br/><br/>
+							<!--  <button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button> -->
+							<button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
+				</form>
+				
+			</div>
+	
             <table ng-table="tableParams" class="table responsive">
                 <tr ng-repeat="song in songs">
                     <td data-title="'Chanson'" >{{song.name}} </td>
@@ -12,6 +31,7 @@
             </table>
         </div>
     </div>
+        
      <button type="submit"
             ui-sref="playlists"
             class="btn btn-info">
