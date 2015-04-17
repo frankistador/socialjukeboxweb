@@ -9,8 +9,8 @@ spring:
         url: 
         databaseName: socialjukeboxweb
         serverName: localhost
-        username: socialjukeboxweb
-        password: 
+        username: socialjukebox
+        password: sauterelle
 
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQL82Dialect
