@@ -2,6 +2,7 @@ package org.sauterelle.socialjukebox.service;
 
 import javax.inject.Inject;
 
+import org.sauterelle.socialjukebox.web.rest.YoutubeResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,10 @@ public class SubmissionService {
     private SongService songService;
 
     
-/*
-TODO: Implement submit method and change the test associated.
- */
     public void submit(String name){
         log.debug("Submitted song with name : "+name);
-        songService.saveSong(name, "url");
+        String url = YoutubeResource.retrieveOneYoutubeVideo(name);
+        songService.saveSong(name, url);
     }
     
     
