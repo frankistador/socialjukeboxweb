@@ -28,7 +28,7 @@ public class YoutubeResource {
         return retrieveOneYoutubeVideo(songName);
     }
 
-    private String retrieveOneYoutubeVideo (String query){
+    public static String retrieveOneYoutubeVideo (String query){
         List<SearchResult> results = YoutubeSearch.search(query, new Long(1));
         if (results.size() == 0) {
             return "https://www.youtube.com/watch?v=oHg5SJYRHA0";
