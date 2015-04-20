@@ -1,7 +1,7 @@
 {
     "main": {
-        "title": "Welcome, Java Hipster!",
-        "subtitle": "This is your homepage",
+        "title": "Social JUKEBOX",
+        "subtitle": "Welcome !!!",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },

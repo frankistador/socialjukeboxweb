@@ -16,12 +16,12 @@
 							<input ng-model="title" type="text" name="title" id="title" size="40" />
 							
 							<br/><br/>
-							<button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
+							<button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Ajouter </button>
 							
 				</form>
 				
 			</div>
-	
+			
             <table ng-table="tableParams" class="table responsive">
                 <tr ng-repeat="song in songs">
                     <td data-title="'Chanson'" >{{song.name}} </td>
