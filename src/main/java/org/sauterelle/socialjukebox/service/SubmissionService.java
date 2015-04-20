@@ -20,10 +20,11 @@ public class SubmissionService {
     private SongService songService;
 
     
-    public void submit(String name){
-        log.debug("Submitted song with name : "+name);
+    public void submit(String name, Long idPlaylist){
+       // log.debug("Submitted song with name : "+name);
         String url = YoutubeResource.retrieveOneYoutubeVideo(name);
-        songService.saveSong(name, url);
+        songService.saveSong(name, url, idPlaylist);
+        
     }
     
     

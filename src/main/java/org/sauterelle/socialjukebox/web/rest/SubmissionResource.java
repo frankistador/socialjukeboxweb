@@ -33,11 +33,11 @@ public class SubmissionResource {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<?> submit(@RequestParam String name) {
-        if (StringUtils.isEmpty(name)) {
+    public ResponseEntity<?> submit(@RequestParam String name, @RequestParam Long idPlaylist) {
+        if (StringUtils.isEmpty(name) || idPlaylist==null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        submissionService.submit(name);
+        submissionService.submit(name, idPlaylist);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @RequestMapping(value = "/submission/test",
