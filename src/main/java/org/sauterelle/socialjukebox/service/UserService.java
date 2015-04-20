@@ -48,7 +48,7 @@ public class UserService {
         User user = userRepository.findOneByActivationKey(key);
         // activate given user for the registration key.
         if (user != null) {
-            user.setActivated(true);
+        	user.setActivated(true);
             user.setActivationKey(null);
             userRepository.save(user);
             log.debug("Activated user: {}", user);
@@ -70,7 +70,7 @@ public class UserService {
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
