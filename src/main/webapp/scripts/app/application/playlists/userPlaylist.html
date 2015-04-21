@@ -1,40 +1,48 @@
 <div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-           
+    
+        <div class="titre">
             <h1 class="title">{{playlistName}} </h1>
+        </div>
+        
+       <div class="module">
             
 			<div class="addPanel">
 		    
-			    <div ng-show="success" class="alert alert-success" role="alert">Chanson "{{submittedSong}}" envoyée.</div>
+				<div ng-show="success" class="alert alert-success" role="alert">Chanson "{{submittedSong}}" envoyée.</div>
 					
 				<div ng-show="error" class="alert alert-danger" role="alert">Veuillez saisir un titre dans le champ</div>
 						
-			     <form class="form"> 
+			 	<form class="form"> 
 						
-							<label for="title" translate="userPlaylist.form.title">Saisir un nom de chanson : </label>
-							<input ng-model="title" type="text" name="title" id="title" size="40" />
-							
-							<br/><br/>
-							<!--  <button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button> -->
-							<button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
+					<label for="title" translate="userPlaylist.form.title">Saisir un nom de chanson : </label>
+					<input ng-model="title" type="text" name="title" id="title" size="40" />
+								
+					<br/><br/>
+					<button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
 				</form>
-				
+					
 			</div>
-	
-            <table ng-table="tableParams" class="table responsive">
-                <tr ng-repeat="song in songs">
-                    <td data-title="'Chanson'" >{{song.name}} </td>
-                    <td data-title="'Artiste'">{{song.artist}}</td>
-                     
-                </tr>
-            </table>
-        </div>
+				
+			<div class="youtube">
+	    		<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/6_I70KACh4o"  style="width:300px;height:80px;" ></iframe>
+	        </div>
+    		
+    	</div>
+    	      
+       <table class="table">
+       		<tr ng-repeat="song in songs">
+        		<td data-title="'Chanson'" >{{song.name}} </td>
+            	<td data-title="'Artiste'">{{song.artist}}</td>
+            </tr>
+		</table>
+ 
     </div>
         
-     <button type="submit"
-            ui-sref="playlists"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+     <button type="submit" ui-sref="playlists" class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+        &nbsp;
+        <span translate="entity.action.back"> Back</span>
     </button>
+    
 </div>
