@@ -12,7 +12,7 @@ angular.module('socialjukeboxwebApp')
                 views: {
                     'content@': {
                         templateUrl: 'scripts/app/application/playlists/RunPlaylist.html',
-                        controller: 'RunPlaylistsController'
+                        controller: 'RunPlaylistController'
                     }
                 },
                 resolve: {

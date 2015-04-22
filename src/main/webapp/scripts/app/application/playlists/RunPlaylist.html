@@ -1,11 +1,51 @@
 <div>
 
-    <h2> Jouer une playlist </h2>
+    <h2> Jouer une playlist {{test}} </h2>
 
 
-    <div class="table-responsive">
-    
-        <object type="text/html" data="http://www.youtube.com/embed/6_I70KACh4o" style="width:500px;height:385px;"></object>
+    <div>
+
+        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+        <div id="player"></div>
+        <script>
+ var listVideos = ['zzGshz7tmQ4','5otaBKsz7k4','dZyeKmytFeA','kEV-bY29uZc'];
+            var videoIterator = 1;
+            
+            
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: listVideos[0],
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });  
+               
+            }
+            function onPlayerReady(event) {
+                event.target.playVideo();
+      
+            }
+            function onPlayerStateChange(event) {
+                if (event.data == 0) {
+                    event.target.cueVideoById(listVideos[videoIterator]);
+                    event.target.playVideo();
+                    videoIterator = videoIterator + 1;
+              
+                }
+                
+            }
+            
+            onYouTubeIframeAPIReady();
+            </script>
+
     </div>
 </div>
