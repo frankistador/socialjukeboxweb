@@ -11,18 +11,19 @@
             <p class="lead" translate="main.subtitle">Bienvenue</p>
 			
 			<div ng-switch="isAuthenticated()">
-			
-				<div ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
-                    You are logged in as user "Admin".
-                </div>
-				
-				
+					
 				<div class="connexion">
-                 
-					<h3> Se connecter</h3>
+                 	
+                 	<div class="alert alert-success" ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
+                    	You are logged in as user "Admin".
+                	</div>
+                
+					<h3 ng-switch-when="false"> Se connecter</h3>
+					<h3 ng-switch-when="true"> Se déconnecter</h3>
 					<br/>
 						  
-					<button ng-click="go('\login')" class="btn btn-primary">Se connecter</button>
+					<button ng-switch-when="false" ng-click="go('\login')" class="btn btn-primary">Se connecter</button>
+					<button ng-switch-when="true" ng-click="logout()" class="btn btn-primary">Se déconnecter</button>
 					<br/><br/>
 					
 					<div ng-switch-when="false" class="create">
@@ -42,10 +43,6 @@
                 </div>
 			
         </div>
-		
-		<div class="footer">
-		
-		</div>
 		
     </div>
 </div>

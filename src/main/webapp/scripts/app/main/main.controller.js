@@ -31,6 +31,11 @@ angular.module('socialjukeboxwebApp')
             });
         };
         
+        $scope.logout = function () {
+            Auth.logout();
+           	$state.go('home');
+        };
+        
         
         
     });

@@ -191,6 +191,7 @@ ul#strength {
 .footer {
 	background-color: #f5f5f5;
 	border: 2px solid #FF900A;
+	text-align: center;
 }
 
 /* end Password strength bar style */
