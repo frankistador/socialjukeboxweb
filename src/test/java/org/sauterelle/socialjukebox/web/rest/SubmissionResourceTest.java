@@ -75,23 +75,6 @@ public class SubmissionResourceTest {
         ReflectionTestUtils.setField(submissionMockResource, "submissionService", submissionService);
         this.restMvc = MockMvcBuilders.standaloneSetup(submissionResource).build();
         this.restUserMockMvc = MockMvcBuilders.standaloneSetup(submissionMockResource).build();
-
-/*        doNothing().when(mockMailService).sendActivationEmail((User) anyObject(), anyString());
-
-
-        AccountResource accountResource = new AccountResource();
-        ReflectionTestUtils.setField(accountResource, "userRepository", userRepository);
-        ReflectionTestUtils.setField(accountResource, "userService", userService);
-        ReflectionTestUtils.setField(accountResource, "mailService", mockMailService);
-
-        AccountResource accountUserMockResource = new AccountResource();
-        ReflectionTestUtils.setField(accountUserMockResource, "userRepository", userRepository);
-        ReflectionTestUtils.setField(accountUserMockResource, "userService", mockUserService);
-        ReflectionTestUtils.setField(accountUserMockResource, "mailService", mockMailService);
-
-        this.restMvc = MockMvcBuilders.standaloneSetup(accountResource).build();
-        this.restUserMockMvc = MockMvcBuilders.standaloneSetup(accountUserMockResource).build();
-        */
     }
 
     @Test
@@ -100,10 +83,12 @@ public class SubmissionResourceTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
+    /*
     @Test
     public void testSubmissionWithOneParamIsAccepted() throws Exception {
-        restUserMockMvc.perform(post("/api/submission/submit").param("name","test")
+        restUserMockMvc.perform(post("/api/submission/submit").param("name","test").param("idPlaylist","1045")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+    */
 }

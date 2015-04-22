@@ -2,7 +2,7 @@
 
 angular.module('socialjukeboxwebApp').
     controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http) {
-	
+
 	$scope.songs = "";
 	$scope.urlParam=$stateParams.id;
     
@@ -25,7 +25,7 @@ angular.module('socialjukeboxwebApp').
         });
 
         function getPlaylist() {
-            $http.get("/api/playlists/"+$scope.urlParam).success(function(data) {
+            $http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
                 $scope.record = data;
                 $scope.songs = data.songs;
                 $scope.playlistName = data.name;
@@ -41,7 +41,7 @@ angular.module('socialjukeboxwebApp').
         	
        
   			  
-        	$http.post('/api/submission/submit?name='+$scope.title+'&idPlaylist='+$scope.urlParam).
+        	$http.post(window.location.pathname+'api/submission/submit?name='+$scope.title+'&idPlaylist='+$scope.urlParam).
     		  success(function(data, status, headers, config) {
     			  $scope.success=true;
     			  $scope.submittedSong=$scope.title;
