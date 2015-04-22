@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('socialjukeboxwebApp').
-    controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http) {
+    controller('userPlaylistController', function ($scope, Principal, ngTableParams, $stateParams, $http) {
 	
 	$scope.songs = [];
-	$scope.urlParam=$stateParams.id;
-    		
+	$scope.urlParam=$stateParams.id;	
     
         Principal.identity().then(function(account) {
             $scope.account = account;
@@ -16,8 +15,15 @@ angular.module('socialjukeboxwebApp').
             $http.get("/api/playlists/"+$scope.urlParam).success(function(data) {
                 $scope.record = data;
                 $scope.songs = data.songs;
-                $scope.playlistName = data.name;                                
-
+                $scope.playlistName = data.name;
+                
+                $scope.url = $scope.songs.url;  
+                
+               for (var i = 0; i < data.songs.length; i++) {
+                	$scope.urlVideo	=  $scope.songs[i].url.split("=");
+                }
+                                 
+ 				
             })
 		};
 		
@@ -42,5 +48,7 @@ angular.module('socialjukeboxwebApp').
     			  $scope.title=""; 
     		  }); 
     	}
+   		
+		
     	
     });
