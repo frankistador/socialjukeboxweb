@@ -23,6 +23,7 @@ angular.module('socialjukeboxwebApp')
                     }]*/
                 }
             })
+            
         .state('userPlaylist', {
             parent: 'application',
             url: '/playlists/:id',
@@ -43,5 +44,5 @@ angular.module('socialjukeboxwebApp')
                     return $translate.refresh();
                 }]
             }
-        });
+        })
     });

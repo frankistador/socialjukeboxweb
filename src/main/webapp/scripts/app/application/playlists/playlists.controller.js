@@ -2,8 +2,10 @@
 
 angular.module('socialjukeboxwebApp')
     .controller('playlistsController', function ($scope, Playlist, ParseLinks) {
+    
     	 $scope.playlists = [];
          $scope.page = 1;
+         
          $scope.loadAll = function() {
              Playlist.query({page: $scope.page, per_page: 20}, function(result, headers) {
                  $scope.links = ParseLinks.parse(headers('link'));
@@ -12,6 +14,7 @@ angular.module('socialjukeboxwebApp')
                  }
              });
          };
+         
          $scope.reset = function() {
              $scope.page = 1;
              $scope.playlists = [];

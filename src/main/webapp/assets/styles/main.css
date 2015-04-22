@@ -147,14 +147,33 @@ ul#strength {
 
 .title {
 	float: left;
-	 text-transform : capitalize;
+	text-transform : capitalize;
+}
+
+.titre {
+	display: block;
+	float : left;
+	width: 100%;
+}
+
+.module {
+	display: block;
+	float: left;
+	width: 100%; 
+	margin: 10px;
+	padding-right: 10px;
 }
 
 .addPanel {
 	border : 1px solid grey;
 	border-radius: 10px;
 	width: 400px;
-	float: right;
+	float: left;
 	padding : 5px;
 }
+
+.youtube {
+	float: right;
+}
+
 /* end Password strength bar style */
