@@ -23,14 +23,14 @@
 				</form>
 					
 			</div>
-				
-			<div class="youtube">
-	    		<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/6_I70KACh4o"  style="width:300px;height:80px;" ></iframe>
+		
+			<div id="player" class="youtube">
+	    		<object type="text/html" data="https://www.youtube.com/embed/{{urlVideo[1]}}" style="width:500px;height:80px;"></object>
 	        </div>
     		
     	</div>
-    	      
-       <table class="table">
+
+       <table ng-table="tableParams" class="table">
        		<tr ng-repeat="song in songs">
         		<td data-title="'Chanson'" >{{song.name}} </td>
             	<td data-title="'Artiste'">{{song.artist}}</td>
