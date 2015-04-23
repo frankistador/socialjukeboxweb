@@ -1,48 +1,46 @@
 <div>
     <div class="row">
-    
+
         <div class="titre">
             <h1 class="title">{{playlistName}} </h1>
         </div>
-        
-       <div class="module">
-            
-			<div class="addPanel">
-		    
-				<div ng-show="success" class="alert alert-success" role="alert">Chanson "{{submittedSong}}" envoyée.</div>
-					
-				<div ng-show="error" class="alert alert-danger" role="alert">Veuillez saisir un titre dans le champ</div>
-						
-			 	<form class="form"> 
-						
-					<label for="title" translate="userPlaylist.form.title">Saisir un nom de chanson : </label>
-					<input ng-model="title" type="text" name="title" id="title" size="40" />
-								
-					<br/><br/>
-					<button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
-				</form>
-					
-			</div>
-		
-			<div id="player" class="youtube">
-	    		<object type="text/html" data="https://www.youtube.com/embed/{{urlVideo[1]}}" style="width:500px;height:80px;"></object>
-	        </div>
-    		
-    	</div>
 
-       <table ng-table="tableParams" class="table">
-       		<tr ng-repeat="song in songs">
-        		<td data-title="'Chanson'" >{{song.name}} </td>
-            	<td data-title="'Artiste'">{{song.artist}}</td>
+        <div class="module">
+
+            <div class="addPanel">
+
+                <div ng-show="success" class="alert alert-success" role="alert">Chanson "{{submittedSong}}" envoyée.</div>
+
+                <div ng-show="error" class="alert alert-danger" role="alert">Veuillez saisir un titre dans le champ</div>
+
+                <form class="form"> 
+
+                    <label for="title" translate="userPlaylist.form.title">Saisir un nom de chanson : </label>
+                    <input ng-model="title" type="text" name="title" id="title" size="40" />
+
+                    <br/><br/>
+                    <button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
+                </form>
+
+            </div>
+
+            <youtube class="youtube" videoid="{{yt.videoid}}"></youtube>
+         
+        </div>
+
+        <table ng-table="tableParams" class="table">
+            <tr ng-repeat="song in songs">
+                <td data-title="'Chanson'" >{{song.name}} </td>
+                <td data-title="'Artiste'">{{song.artist}}</td>
             </tr>
-		</table>
- 
+        </table>
+
     </div>
-        
-     <button type="submit" ui-sref="playlists" class="btn btn-info">
+
+    <button type="submit" ui-sref="playlists" class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>
         &nbsp;
         <span translate="entity.action.back"> Back</span>
     </button>
-    
+
 </div>
