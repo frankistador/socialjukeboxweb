@@ -10,7 +10,7 @@ constant('YT_event', {
 
 angular.module('socialjukeboxwebApp').
     controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http,YT_event) {
-
+    $scope.lecture= true;
 	$scope.songs = [];
 	$scope.urlParam=$stateParams.id;
     $scope.videoIterator = 0;
@@ -41,8 +41,39 @@ angular.module('socialjukeboxwebApp').
     };
     
     $scope.YT_event = YT_event;
+    
+    $scope.nextSong = function () {
+        $scope.playlistLength = $scope.youtubeVideosIds.length - 1;
+        if($scope.videoIterator < $scope.playlistLength)
+        {
+            $scope.videoIterator++;
+            $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
+        }
+        else {
+            $scope.videoIterator = 0;
+            $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
+        }
+    }
+    
+    $scope.previousSong = function () {
+        $scope.playlistLength = $scope.youtubeVideosIds.length - 1;
+        if($scope.videoIterator > 0){
+            $scope.videoIterator--;
+            $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
+        }
+        else {
+            $scope.videoIterator = $scope.playlistLength;
+            $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];            
+        }
+    }
+    
+    $scope.selectSong = function (position) {
+        $scope.videoIterator = position;
+        $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator]; 
+    }
 
   $scope.sendControlEvent = function (yt_event) {
+    $scope.lecture = !$scope.lecture;
     this.$broadcast(yt_event);
   };
   $scope.$on(YT_event.STATUS_CHANGE, function(event, data) {
@@ -71,6 +102,7 @@ angular.module('socialjukeboxwebApp').
     			  $scope.error=true;
     			  $scope.title=""; 
     		  }); 
+            
     	}
    		
 		
@@ -157,7 +189,14 @@ angular.module('socialjukeboxwebApp')
         player.cueVideoById(scope.videoid);
       
       });
+        
+    scope.$on(YT_event.PLAY, function () {
+        player.playVideo();
+      }); 
 
+      scope.$on(YT_event.PAUSE, function () {
+        player.pauseVideo();
+      });  
     }  
   };
 });

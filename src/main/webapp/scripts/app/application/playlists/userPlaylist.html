@@ -6,19 +6,19 @@
           
             <div class= "lecteur" ng-switch="test">
             
-	        <button type="submit" ui-sref="playlists" class=" btn btn-default button">
+	        <button ng-click="previousSong()" class=" btn btn-default button">
 	        	<span class="glyphicon glyphicon-step-backward test" ></span>
 	   		</button>
 	   		
-	     	<button  class=" btn btn-default button" ng-click="lecture=true" ng-show="!lecture">
+	     	<button  class=" btn btn-default button" ng-click="sendControlEvent(YT_event.PLAY)" ng-show="!lecture">
 	        	<span class="glyphicon glyphicon-play" ></span>
 	    	</button>
 	    	
-	    	<button  class=" btn btn-default button" ng-click="lecture=false" ng-show="lecture">
+	    	<button  class=" btn btn-default button" ng-click="sendControlEvent(YT_event.PAUSE)" ng-show="lecture">
 	        	<span class="glyphicon glyphicon-pause"></span>
 	    	</button>
 	    	
-	     	<button type="submit" ui-sref="playlists" class="btn btn-default button">
+	     	<button ng-click="nextSong()" class="btn btn-default button">
 	        	<span class="glyphicon glyphicon-step-forward" ></span>
 	   		</button>
             </div>
@@ -52,6 +52,10 @@
             <tr ng-repeat="song in songs">
                 <td data-title="'Chanson'" >{{song.name}} </td>
                 <td data-title="'Artiste'">{{song.artist}}</td>
+                <td > 
+                <button ng-click="selectSong(songs.indexOf(song))"  class="btn btn-success">
+                 <span class="glyphicon glyphicon-music"></span>&nbsp;
+                </button> </td>
             </tr>
         </table>
 
