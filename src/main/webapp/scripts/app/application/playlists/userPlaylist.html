@@ -3,6 +3,26 @@
 
         <div class="titre">
             <h1 class="title">{{playlistName}} </h1>
+          
+            <div class= "lecteur" ng-switch="test">
+            
+	        <button type="submit" ui-sref="playlists" class=" btn btn-default button">
+	        	<span class="glyphicon glyphicon-step-backward test" ></span>
+	   		</button>
+	   		
+	     	<button  class=" btn btn-default button" ng-click="lecture=true" ng-show="!lecture">
+	        	<span class="glyphicon glyphicon-play" ></span>
+	    	</button>
+	    	
+	    	<button  class=" btn btn-default button" ng-click="lecture=false" ng-show="lecture">
+	        	<span class="glyphicon glyphicon-pause"></span>
+	    	</button>
+	    	
+	     	<button type="submit" ui-sref="playlists" class="btn btn-default button">
+	        	<span class="glyphicon glyphicon-step-forward" ></span>
+	   		</button>
+            </div>
+            
         </div>
 
         <div class="module">
@@ -34,6 +54,7 @@
                 <td data-title="'Artiste'">{{song.artist}}</td>
             </tr>
         </table>
+
 
     </div>
 

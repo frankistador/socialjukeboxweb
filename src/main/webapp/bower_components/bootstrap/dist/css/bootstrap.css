@@ -504,6 +504,8 @@ th {
 }
 .glyphicon-step-backward:before {
   content: "\e069";
+  font-size:2.5em;
+  color: black;
 }
 .glyphicon-fast-backward:before {
   content: "\e070";
@@ -513,9 +515,13 @@ th {
 }
 .glyphicon-play:before {
   content: "\e072";
+  font-size:2.5em;
+  color: black;
 }
 .glyphicon-pause:before {
   content: "\e073";
+  font-size:2.5em;
+  color: black;
 }
 .glyphicon-stop:before {
   content: "\e074";
@@ -528,6 +534,8 @@ th {
 }
 .glyphicon-step-forward:before {
   content: "\e077";
+  font-size:2.5em;
+  color: black;
 }
 .glyphicon-eject:before {
   content: "\e078";
