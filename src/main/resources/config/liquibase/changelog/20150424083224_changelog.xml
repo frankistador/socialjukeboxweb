@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+   <changeSet author="guillot (generated)" id="1429864350786-1">
+      <addColumn tableName="T_USER_PLAYLIST">
+         <column name="host_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864350786-2">
+      <addForeignKeyConstraint baseColumnNames="host_id"
+                               baseTableName="T_USER_PLAYLIST"
+                               constraintName="FK_ractyxyj73o62jxpg13xrc4p9"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_USER"/>
+   </changeSet>
+   <!-- 
+   <changeSet author="guillot (generated)" id="1429864350786-3">
+      <dropForeignKeyConstraint baseTableName="t_playlist"
+                                constraintName="FK_c8p80gwjxjyny22qi1237upr3"/>
+   </changeSet>
+    -->
+   <changeSet author="guillot (generated)" id="1429864350786-4">
+      <dropForeignKeyConstraint baseTableName="t_user_playlist"
+                                constraintName="FK_koem0rddmv95m9ohpinva54n"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864350786-5">
+      <dropUniqueConstraint constraintName="t_user_playlist_playlists_id_key"
+                            tableName="t_user_playlist"/>
+   </changeSet>
+   <!-- 
+   <changeSet author="guillot (generated)" id="1429864350786-6">
+      <dropColumn columnName="host_id" tableName="t_playlist"/>
+   </changeSet>
+    -->
+   <changeSet author="guillot (generated)" id="1429864350786-7">
+      <dropColumn columnName="user_id" tableName="t_user_playlist"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864350786-8">
+      <dropPrimaryKey tableName="T_USER_PLAYLIST"/>
+      <addPrimaryKey columnNames="playlists_id"
+                     constraintName="T_USER_PLAYLISTPK"
+                     tableName="T_USER_PLAYLIST"/>
+   </changeSet>
+</databaseChangeLog>

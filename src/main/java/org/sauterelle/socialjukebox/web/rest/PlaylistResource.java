@@ -1,8 +1,10 @@
 package org.sauterelle.socialjukebox.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import org.sauterelle.socialjukebox.domain.Playlist;
+
+import org.sauterelle.socialjukebox.domain.*;
 import org.sauterelle.socialjukebox.repository.PlaylistRepository;
+import org.sauterelle.socialjukebox.repository.UserRepository;
 import org.sauterelle.socialjukebox.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 
 /**
@@ -31,6 +36,8 @@ public class PlaylistResource {
 
     @Inject
     private PlaylistRepository playlistRepository;
+    @Inject 
+    private UserRepository userRepository;
 
     /**
      * POST  /playlists -> Create a new playlist.
@@ -41,6 +48,8 @@ public class PlaylistResource {
     @Timed
     public ResponseEntity<Void> create(@Valid @RequestBody Playlist playlist) throws URISyntaxException {
         log.debug("REST request to save Playlist : {}", playlist);
+        User user = userRepository.findOneByLogin(playlist.getHost().getLogin());
+        playlist.setHost(user);
         if (playlist.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new playlist cannot already have an ID").build();
         }
