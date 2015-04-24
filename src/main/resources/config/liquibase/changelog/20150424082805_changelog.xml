@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+   <changeSet author="guillot (generated)" id="1429864091807-1">
+      <dropForeignKeyConstraint baseTableName="t_playlist"
+                                constraintName="FK_c8p80gwjxjyny22qi1237upr3"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864091807-2">
+      <dropUniqueConstraint constraintName="t_user_playlist_playlists_id_key"
+                            tableName="t_user_playlist"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864091807-3">
+      <dropColumn columnName="host_id" tableName="t_playlist"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864091807-4">
+      <dropNotNullConstraint columnDataType="bigint"
+                             columnName="playlists_id"
+                             tableName="T_USER_PLAYLIST"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429864091807-5">
+      <dropPrimaryKey tableName="T_USER_PLAYLIST"/>
+      <addPrimaryKey columnNames="user_id"
+                     constraintName="T_USER_PLAYLISTPK"
+                     tableName="T_USER_PLAYLIST"/>
+   </changeSet>
+</databaseChangeLog>

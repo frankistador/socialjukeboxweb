@@ -8,6 +8,7 @@ angular.module('socialjukeboxwebApp')
                 method: 'GET',
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
+                    console.log(data);
                     return data;
                 }
             },

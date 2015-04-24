@@ -1,12 +1,14 @@
 package org.sauterelle.socialjukebox.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -69,8 +71,21 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private Set<PersistentToken> persistentTokens = new HashSet<>();
+    
+    
+    @OneToMany(mappedBy="host")
+    private Set<Playlist> playlists = new HashSet<>();
+    
 
-    public Long getId() {
+    public Set<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(Set<Playlist> playlists) {
+		this.playlists = playlists;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -193,5 +208,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
                 ", langKey='" + langKey + '\'' +
                 ", activationKey='" + activationKey + '\'' +
                 "}";
+    }
+    
+    public void addPlaylist(Playlist playlist) {
+    	this.playlists.add(playlist);
     }
 }
