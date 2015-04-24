@@ -176,4 +176,47 @@ ul#strength {
 	float: right;
 }
 
+.lecteur{
+	border : 1px solid grey;
+	border-radius: 10px;
+	width: 18%;
+	margin: auto;
+	background: #FF900A;
+}
+
+.button {
+  border-radius: 10px;
+  color: black;
+  background: none;
+  border: none;
+}
+
+.button:hover {
+  background:#FFFF33;
+}
+
+.glyphicon-pause:before {
+  content: "\e073" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
+.glyphicon-step-forward:before {
+  content: "\e077" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
+.glyphicon-play:before {
+  content: "\e072" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
+.glyphicon-step-backward:before {
+  content: "\e069" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
 /* end Password strength bar style */
