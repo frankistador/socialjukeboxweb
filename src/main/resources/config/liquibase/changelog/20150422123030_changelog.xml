@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+   <changeSet author="guillot (generated)" id="1429705840482-1">
+      <createTable tableName="T_USER_PLAYLIST">
+         <column name="user_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="playlists_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429705840482-2">
+      <addColumn tableName="T_PLAYLIST">
+         <column name="host_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429705840482-3">
+      <addPrimaryKey columnNames="user_id, playlists_id" tableName="T_USER_PLAYLIST"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429705840482-4">
+      <addUniqueConstraint columnNames="playlists_id"
+                           deferrable="false"
+                           disabled="false"
+                           initiallyDeferred="false"
+                           tableName="T_USER_PLAYLIST"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429705840482-5">
+      <addForeignKeyConstraint baseColumnNames="host_id"
+                               baseTableName="T_PLAYLIST"
+                               constraintName="FK_c8p80gwjxjyny22qi1237upr3"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_USER"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429705840482-6">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="T_USER_PLAYLIST"
+                               constraintName="FK_koem0rddmv95m9ohpinva54n"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_USER"/>
+   </changeSet>
+   <changeSet author="guillot (generated)" id="1429705840482-7">
+      <addForeignKeyConstraint baseColumnNames="playlists_id"
+                               baseTableName="T_USER_PLAYLIST"
+                               constraintName="FK_q8yr6ki5an1vv33vrvou4xqtt"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_PLAYLIST"/>
+   </changeSet>
+</databaseChangeLog>

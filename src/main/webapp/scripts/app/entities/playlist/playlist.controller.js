@@ -1,7 +1,12 @@
 'use strict';
 
 angular.module('socialjukeboxwebApp')
-    .controller('PlaylistController', function ($scope, Playlist, Song, ParseLinks) {
+    .controller('PlaylistController', function ($scope, Playlist, Song, ParseLinks, Principal) {
+    	
+    	 Principal.identity().then(function(account) {
+    		 $scope.account = account;
+    		 $scope.isAuthenticated = Principal.isAuthenticated;
+    	 });
         $scope.playlists = [];
         $scope.songs = Song.query();
         $scope.page = 1;
@@ -25,6 +30,7 @@ angular.module('socialjukeboxwebApp')
         $scope.loadAll();
 
         $scope.create = function () {
+        	$scope.playlist.host = $scope.account;
             Playlist.update($scope.playlist,
                 function () {
                     $scope.reset();

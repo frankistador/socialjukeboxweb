@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface PlaylistRepository extends JpaRepository<Playlist,Long> {
 
-    @Query("select playlist from Playlist playlist left join fetch playlist.songs where playlist.id =:id")
+    @Query("select playlist from Playlist playlist left join fetch playlist.songs left join fetch playlist.host where playlist.id =:id")
     Playlist findOneWithEagerRelationships(@Param("id") Long id);
 
 }

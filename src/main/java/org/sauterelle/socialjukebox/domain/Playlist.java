@@ -3,6 +3,7 @@ package org.sauterelle.socialjukebox.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +25,22 @@ public class Playlist implements Serializable {
     @Column(name = "name", length = 20, nullable = false)
     private String name;
 
-    @ManyToMany
+    @ManyToOne
+    @JoinTable(name = "T_USER_PLAYLIST",
+    joinColumns = @JoinColumn(name="playlists_id", referencedColumnName="ID"),
+    inverseJoinColumns = @JoinColumn(name="host_id", referencedColumnName="ID"))
+    private User host;
+    
+    
+    public User getHost() {
+		return host;
+	}
+
+	public void setHost(User host) {
+		this.host = host;
+	}
+
+	@ManyToMany
     @JoinTable(name = "T_PLAYLIST_SONG",
                joinColumns = @JoinColumn(name="playlists_id", referencedColumnName="ID"),
                inverseJoinColumns = @JoinColumn(name="songs_id", referencedColumnName="ID"))
@@ -79,7 +95,8 @@ public class Playlist implements Serializable {
     public String toString() {
         return "Playlist{" +
                 "id=" + id +
-                ", name='" + name + "'" +
+                ", name='" + name + 
+               // ", host="  + host.getLogin() + "'" +
                 '}';
     }
 }
