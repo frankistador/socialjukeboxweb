@@ -25,24 +25,25 @@ angular.module('socialjukeboxwebApp')
             })
             
         .state('userPlaylist', {
-            parent: 'application',
-            url: '/playlists/:id',
-            data: {
-                roles: ['ROLE_USER'],
-                pageTitle : 'userPlaylist.title'
-
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'scripts/app/application/playlists/userPlaylist.html',
-                    controller: 'userPlaylistController'
-                }
-            },
-            resolve: {
-                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
-                    $translatePartialLoader.addPart('userPlaylist');
-                    return $translate.refresh();
-                }]
-            }
-        })
+	            parent: 'application',
+	            url: '/playlists/:id',
+	            data: {
+	                roles: ['ROLE_USER'],
+	                pageTitle : 'userPlaylist.title'
+	
+	            },
+	            views: {
+	                'content@': {
+	                    templateUrl: 'scripts/app/application/playlists/userPlaylist.html',
+	                    controller: 'userPlaylistController'
+	                }
+	            },
+	            resolve: {
+	                mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+	                    $translatePartialLoader.addPart('userPlaylist');
+	                    return $translate.refresh();
+	                }]
+	            }
+	    })
+      
     });
