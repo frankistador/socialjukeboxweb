@@ -7,10 +7,11 @@
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150409151246_added_entity_Song.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150409151416_added_entity_Playlist.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20150422123030_changelog.xml" relativeToChangelogFile="false"/>
-    <!-- <include file="classpath:config/liquibase/changelog/20150424082805_changelog.xml" relativeToChangelogFile="false"/>  -->
+    <!--<include file="classpath:config/liquibase/changelog/20150422123030_changelog.xml" relativeToChangelogFile="false"/>
+     <include file="classpath:config/liquibase/changelog/20150424082805_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150424083224_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150424090350_changelog.xml" relativeToChangelogFile="false"/>
-    
+    -->
     <!-- JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20150504095742_changelog.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

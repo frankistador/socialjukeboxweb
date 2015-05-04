@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+   <changeSet author="William (generated)" id="1430733469012-1">
+      <createTable tableName="T_USER_PLAYLIST">
+         <column name="host_id" type="BIGINT"/>
+         <column name="playlists_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="William (generated)" id="1430733469012-2">
+      <addPrimaryKey columnNames="playlists_id"
+                     constraintName="T_USER_PLAYLISTPK"
+                     tableName="T_USER_PLAYLIST"/>
+   </changeSet>
+   <changeSet author="William (generated)" id="1430733469012-3">
+      <addForeignKeyConstraint baseColumnNames="playlists_id"
+                               baseTableName="T_USER_PLAYLIST"
+                               constraintName="FK_q8yr6ki5an1vv33vrvou4xqtt"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_PLAYLIST"/>
+   </changeSet>
+   <changeSet author="William (generated)" id="1430733469012-4">
+      <addForeignKeyConstraint baseColumnNames="host_id"
+                               baseTableName="T_USER_PLAYLIST"
+                               constraintName="FK_ractyxyj73o62jxpg13xrc4p9"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_USER"/>
+   </changeSet>
+</databaseChangeLog>
