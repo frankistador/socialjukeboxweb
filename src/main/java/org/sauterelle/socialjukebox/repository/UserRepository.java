@@ -1,6 +1,5 @@
 package org.sauterelle.socialjukebox.repository;
 
-import org.sauterelle.socialjukebox.domain.Playlist;
 import org.sauterelle.socialjukebox.domain.User;
 import org.joda.time.DateTime;
 import org.springframework.data.jpa.repository.JpaRepository;
