@@ -105,8 +105,6 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
 
     }
     $scope.refreshSongs = function() {
-        console.log("refreshing songs");
-            
         $http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
             $scope.songs = data.songs;
             $scope.playlistName = data.name;
@@ -133,7 +131,7 @@ angular.module('socialjukeboxwebApp')
 
         template: '<div></div>',
 
-        link: function(scope, element, attrs, $rootScope) {
+        link: function(scope, element, attrs, $rootScope, $timeout) {
             var tag = document.createElement('script');
             tag.src = "https://www.youtube.com/iframe_api";
             var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -196,9 +194,12 @@ angular.module('socialjukeboxwebApp')
                 if (newValue == oldValue) {
                     return;
                 }
-
-                player.cueVideoById(scope.videoid);
-
+                if (!player){
+                    $window.onYouTubeIframeAPIReady();
+                }
+                else {
+                    player.cueVideoById(scope.videoid);
+                }
             });
 
             scope.$on(YT_event.PLAY, function () {
