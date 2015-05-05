@@ -78,8 +78,14 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
     };
     $scope.$on(YT_event.STATUS_CHANGE, function(event, data) {
         $scope.yt.playerStatus = data;
+        if (data == "PAUSED") {
+            $scope.lecture = false;
+        }
         if (data == "NOT PLAYING") {
             event.target.playVideo();
+        }
+        if (data == "PLAYING") {
+            $scope.lecture = true;
         }
         if (data == "ENDED") {
             $scope.videoIterator++;
