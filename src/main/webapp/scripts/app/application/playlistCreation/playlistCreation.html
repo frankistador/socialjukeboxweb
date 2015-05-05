@@ -1,0 +1,13 @@
+<div>
+
+    <h2 >Créer une playlist</h2>
+    <div ng-show="success" class="alert alert-success" role="alert">Playlist créée avec succès.</div>
+    <!--<div ng-show="error" class="alert alert-danger" role="alert">Veuillez saisir un titre dans le champ</div>
+-->
+    <form class="form"> 
+        <input type="text" placeholder="Nom de la playlist" ng-model="playlist.name">
+        <br/><br/>
+        <button ng-click="submitNewPlaylist()"  class="btn btn-primary">Envoyer </button>
+    </form>
+
+</div>
