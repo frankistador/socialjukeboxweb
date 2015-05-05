@@ -14,7 +14,7 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
     $scope.songs = [];
     $scope.urlParam=$stateParams.id;
     $scope.videoIterator = 0;
-
+    $scope.shareUrl = window.location.origin+window.location.pathname+"#/RunPlaylist/"+$scope.urlParam;
     Principal.identity().then(function(account) {
         $scope.account = account;
         $scope.isAuthenticated = Principal.isAuthenticated;
