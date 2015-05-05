@@ -5,9 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * A Playlist.
@@ -44,7 +42,7 @@ public class Playlist implements Serializable {
     @JoinTable(name = "T_PLAYLIST_SONG",
                joinColumns = @JoinColumn(name="playlists_id", referencedColumnName="ID"),
                inverseJoinColumns = @JoinColumn(name="songs_id", referencedColumnName="ID"))
-    private Set<Song> songs = new HashSet<>();
+    private List<Song> songs = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -62,11 +60,11 @@ public class Playlist implements Serializable {
         this.name = name;
     }
 
-    public Set<Song> getSongs() {
+    public List<Song> getSongs() {
         return songs;
     }
 
-    public void setSongs(Set<Song> songs) {
+    public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
 
