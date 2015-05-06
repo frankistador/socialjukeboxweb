@@ -9,7 +9,7 @@ constant('YT_event', {
 });
 
 angular.module('socialjukeboxwebApp').
-controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http,YT_event, $timeout) {
+controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http,YT_event, $timeout,Playlist) {
     $scope.lecture= true;
     $scope.songs = [];
     $scope.urlParam=$stateParams.id;
@@ -18,9 +18,13 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
     Principal.identity().then(function(account) {
         $scope.account = account;
         $scope.isAuthenticated = Principal.isAuthenticated;
-    });   
+    });
 
     function getPlaylist() {
+        Playlist.get({id: $scope.urlParam}, function(result) {
+            $scope.playlist = result;
+            console.log($scope.playlist);
+        });
         $http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
             $scope.songs = data.songs;
             $scope.playlistName = data.name;
@@ -32,9 +36,15 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
             $scope.refreshSongs();
         })
     };
-
     getPlaylist();
-
+    $scope.removeSong = function(index){
+        
+        if ($scope.playlist.songs.length >0) {
+            $scope.playlist.songs.splice(index,1);
+        }
+        else $scope.playlist.songs = [];
+        Playlist.update($scope.playlist);
+    };
     $scope.yt = {
         width: 500, 
         height: 80

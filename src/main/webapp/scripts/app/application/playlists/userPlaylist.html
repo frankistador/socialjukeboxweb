@@ -59,7 +59,14 @@
                 <td > 
                     <button ng-click="selectSong(songs.indexOf(song))"  class="btn btn-success">
                         <span class="glyphicon glyphicon-music"></span>&nbsp;
-                    </button> </td>
+                    </button> 
+                </td>
+                <td > 
+                   <button type="submit" ng-click="removeSong(songs.indexOf(song))"  class="btn btn-danger">
+                 		<span class="glyphicon glyphicon-trash"></span>&nbsp;
+                	</button>
+                </td>
+
             </tr>
         </table>
 
