@@ -3,7 +3,7 @@
         "title": "Playlist",
         "form": {
             "title": "Titre de la chanson",
-            "button" : "Envoyer"
+            "button" : "Ajouter"
         }
     }
 }

@@ -3,7 +3,7 @@
         "title": "Playlist",
         "form": {
             "title": "Song title",
-            "button": "Send"
+            "button": "Add"
         }
     }
 }
