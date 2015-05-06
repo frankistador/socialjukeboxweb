@@ -11,6 +11,7 @@ constant('YT_event', {
 angular.module('socialjukeboxwebApp').
 controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http,YT_event, $timeout,Playlist) {
     $scope.lecture= true;
+    $scope.isOwnerOfPlaylist = false;
     $scope.songs = [];
     $scope.urlParam=$stateParams.id;
     $scope.videoIterator = 0;
@@ -18,12 +19,14 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
     Principal.identity().then(function(account) {
         $scope.account = account;
         $scope.isAuthenticated = Principal.isAuthenticated;
+        if($scope.account.login == $scope.playlist.host.login) {
+            $scope.isOwnerOfPlaylist = true;
+        }
     });
 
     function getPlaylist() {
         Playlist.get({id: $scope.urlParam}, function(result) {
             $scope.playlist = result;
-            console.log($scope.playlist);
         });
         $http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
             $scope.songs = data.songs;
@@ -33,17 +36,26 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
                 $scope.youtubeVideosIds.push($scope.songs[i].url.split("=")[1]);
             }
             $scope.yt.videoid = $scope.youtubeVideosIds[0];
+            if($scope.account.login == $scope.playlist.host.login) {
+                $scope.isOwnerOfPlaylist = true;
+            }
             $scope.refreshSongs();
         })
     };
     getPlaylist();
     $scope.removeSong = function(index){
-        
-        if ($scope.playlist.songs.length >0) {
-            $scope.playlist.songs.splice(index,1);
+        if ($scope.account.login == $scope.playlist.host.login){
+
+
+            if ($scope.playlist.songs.length >0) {
+                $scope.playlist.songs.splice(index,1);
+            }
+            else $scope.playlist.songs = [];
+            Playlist.update($scope.playlist);
         }
-        else $scope.playlist.songs = [];
-        Playlist.update($scope.playlist);
+        else {
+            window.alert("only host is allowed to delete songs");
+        }
     };
     $scope.yt = {
         width: 500, 

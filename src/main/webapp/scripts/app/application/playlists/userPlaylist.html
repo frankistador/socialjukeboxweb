@@ -62,7 +62,7 @@
                     </button> 
                 </td>
                 <td > 
-                   <button type="submit" ng-click="removeSong(songs.indexOf(song))"  class="btn btn-danger">
+                   <button type="submit" ng-show="isOwnerOfPlaylist" ng-click="removeSong(songs.indexOf(song))"  class="btn btn-danger">
                  		<span class="glyphicon glyphicon-trash"></span>&nbsp;
                 	</button>
                 </td>
