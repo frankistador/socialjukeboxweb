@@ -23,7 +23,6 @@ Developement Ribbon
     left: 0;
     border: 0;
     z-index: 1000;
-    /*background-image: url("../images/development_ribbon.png");*/
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -72,7 +71,7 @@ Browser Upgrade Prompt
     display: inline-block;
     width: 347px;
     height: 497px;
-    background: url("../images/logo.png") no-repeat center top;
+    background: url("../images/text.gif") no-repeat center top, url("../images/logo.png") no-repeat center bottom;
     background-size: contain;
 }
 
@@ -85,7 +84,7 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
     .hipster {
-        background: url("../images/hipster2x.png") no-repeat center top;
+        background: url("../images/logo.png") no-repeat center top;
         background-size: contain;
     }
 }
@@ -146,88 +145,30 @@ ul#strength {
     width:20px;
 }
 
-.title {
-	float: left;
-	text-transform : capitalize;
-}
+/* Css page d'accueil  */
 
-.titre {
-	display: block;
-	float : left;
-	width: 100%;
-}
-
-.module {
-	display: block;
-	float: left;
-	width: 100%; 
-	margin: 10px;
-	padding-right: 10px;
-}
-
-.addPanel {
-	background-color : #D9CAC6;
-	border : 1px dotted #575757;
-	border-radius: 10px;
-	width: 400px;
-	float: left;
-	padding : 5px;
+.accueil {
 	text-align: center;
 }
 
-
-.youtube {
-	float: right;
+.connexion {
+	background: #A0522D;
+	color: #DEB887;
+	border: 2px solid #FFFF33; 
+	margin-bottom: 2%;
 }
 
-.lecteur{
-	border : 1px solid grey;
-	border-radius: 10px;
-	width: 18%;
-	margin: auto;
-	background: #FF900A;
+.connexion h2 {
+	color: #DEB887;
 }
 
-.button {
-  border-radius: 10px;
-  color: black;
-  background: none;
-  border: none;
-}
-
-.button:hover {
-  background:#FFFF33;
-}
-
-.glyphicon-pause:before {
-  content: "\e073" !important;
-  font-size:2.5em !important;
-  color: black !important;
-}
-
-.glyphicon-step-forward:before {
-  content: "\e077" !important;
-  font-size:2.5em !important;
-  color: black !important;
-}
-
-.glyphicon-play:before {
-  content: "\e072" !important;
-  font-size:2.5em !important;
-  color: black !important;
-}
-
-.glyphicon-step-backward:before {
-  content: "\e069" !important;
-  font-size:2.5em !important;
-  color: black !important;
-
-.connexion label {
-	width: 200px;
+.connexion p {
+	color: black;
 }
 
 .create {
 	text-align: right;
+	margin-right: 10px;
 }
 
 .create a {
@@ -247,4 +188,137 @@ ul#strength {
 
 }
 
-/* end Password strength bar style */
+
+/* Playlists */
+
+.playlist h2 {
+	text-align: center;
+	font-size: 300%;
+}
+
+
+/* Playlist view */
+
+.titre {
+	text-align: right;
+}
+
+.titre h1 {
+	font-size: 300%;
+	text-transform : capitalize;
+}
+
+.share {
+	margin-top: 20px;
+}
+
+.btn-facebook {
+    background: #3b5998;
+    border-radius: 3px;
+    color: #fff;
+    margin-right: 300px;
+}
+
+.btn-facebook:link, .btn-facebook:visited {
+    color: #fff
+}
+
+.btn-facebook:active, .btn-facebook:hover {
+    background: #30477a;
+    color: #fff
+}
+
+.lecteur {
+	border : 2px solid #f56b00;;
+	text-align: center;
+	
+	-moz-box-shadow: 0px 5px 10px 5px #f56b00;
+	-webkit-box-shadow: 0px 5px 10px 5px #f56b00;
+	-o-box-shadow: 0px 5px 10px 5px #f56b00;
+	box-shadow: 0px 5px 10px 5px #f56b00;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#f56b00, Direction=180, Strength=10);
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.module {
+	margin: 10px;
+	padding-right: 10px;
+	margin-top: 30px;
+}
+
+
+.table {
+	text-align: center;
+}
+
+.addPanel {
+	background-color : #A0522D;
+	border : 1px dotted #575757;
+	color: black;
+	border-radius: 10px;
+	width: 400px;
+	float: left;
+	padding : 5px;
+	text-align: center;
+}
+
+.button {
+  border-radius: 10px;
+  color: black;
+  background: none;
+  border: none;
+}
+
+.button:hover {
+  background:#FFFF33;
+}
+
+.glyphicon-pause:before {
+  content: "\e073" !important;
+  font-size:2.5em !important;
+  color: red !important;
+}
+
+.glyphicon-step-forward:before {
+  content: "\e077" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
+.glyphicon-play:before {
+  content: "\e072" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
+.glyphicon-step-backward:before {
+  content: "\e069" !important;
+  font-size:2.5em !important;
+  color: black !important;
+}
+
+
+/* Songs add */
+
+.titre h2 {
+	font-size: 250%;
+	text-align: center;
+}
+
+.ajout {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.addSong {
+	background-color : #A0522D;
+	border : 1px dotted #575757;
+	color: black;
+	border-radius: 10px;
+	padding : 5px;
+	text-align: center;
+	width: 100%;
+}
+

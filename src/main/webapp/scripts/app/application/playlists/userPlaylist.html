@@ -1,37 +1,39 @@
 <div>
     <div class="row">
 
-        <div class="titre">
-            <h1 class="title">{{playlistName}} </h1>
-
-            <br/>
-            <div class="row container">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{shareUrl}}">Share on Facebook</a>
-                </div>
-            </div>
-            <div class= "lecteur" ng-switch="test">
-
-                <button ng-click="previousSong()" class=" btn btn-default button">
-                    <span class="glyphicon glyphicon-step-backward test" ></span>
-                </button>
-
-                <button  class=" btn btn-default button" ng-click="sendControlEvent(YT_event.PLAY)" ng-show="!lecture">
-                    <span class="glyphicon glyphicon-play" ></span>
-                </button>
-
-                <button  class=" btn btn-default button" ng-click="sendControlEvent(YT_event.PAUSE)" ng-show="lecture">
-                    <span class="glyphicon glyphicon-pause"></span>
-                </button>
-
-                <button ng-click="nextSong()" class="btn btn-default button">
-                    <span class="glyphicon glyphicon-step-forward" ></span>
-                </button>
-            </div>
-
-        <div class="module">
-
-            <div class="addPanel">
+        <div class="entete col-xs-12 col-md-12">
+        	<div class="titre col-xs-7 col-md-7">
+				<h1>{{playlistName}} </h1>
+        	</div>    
+       
+       		<div class="share col-xs-5 col-md-5">
+       			<a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{shareUrl}}">Share on Facebook</a>
+       		</div>
+       		
+	    </div>
+	    <br/><br/><br/><br/>
+		
+		<div class="lecteur" col-xs-12 col-md-12">
+	
+	    	<button ng-click="previousSong()" class=" btn btn-default button">
+	    		<span class="glyphicon glyphicon-step-backward" ></span>
+	    	</button>
+	
+	        <button  class=" btn btn-default button" ng-click="sendControlEvent(YT_event.PLAY)" ng-show="!lecture">
+	        	<span class="glyphicon glyphicon-play" ></span>
+	        </button>
+	
+	        <button  class=" btn btn-default button" ng-click="sendControlEvent(YT_event.PAUSE)" ng-show="lecture">
+	        	<span class="glyphicon glyphicon-pause"></span>
+	       	</button>
+	
+	        <button ng-click="nextSong()" class="btn btn-default button">
+	        	<span class="glyphicon glyphicon-step-forward" ></span>
+	        </button>
+	    </div>
+		
+        <div class="module col-xs-12 col-md-12">
+            <div class="addPanel col-xs-12 col-md-4">
 
                 <div ng-show="success" class="alert alert-success" role="alert">Chanson "{{submittedSong}}" envoyée.</div>
 
@@ -39,16 +41,15 @@
 
                 <form class="form"> 
 
-                    <label for="title" translate="userPlaylist.form.title">Saisir un nom de chanson : </label>
-                    <input ng-model="title" type="text" name="title" id="title" size="40" />
+                    <input ng-model="title" placeholder="Nom de la chanson" type="text" name="title" id="title" size="40" />
 
                     <br/><br/>
-                    <button ng-click="postSong()"  class="btn btn-primary" translate="userPlaylist.form.button">Envoyer </button>
+                    <button ng-click="postSong()" class="glyphicon glyphicon-plus btn btn-primary" translate="userPlaylist.form.button"> Envoyer</button>
                 </form>
 
             </div>
 
-            <youtube class="youtube" videoid="{{yt.videoid}}"></youtube>
+            <youtube class="col-xs-12 col-md-4" videoid="{{yt.videoid}}"></youtube>
 
         </div>
 
