@@ -97,4 +97,7 @@ public class Playlist implements Serializable {
                // ", host="  + host.getLogin() + "'" +
                 '}';
     }
+    public void removeSong(Song song) {
+        this.songs.remove(song);
+    }
 }

@@ -1,7 +1,9 @@
 package org.sauterelle.socialjukebox.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.sauterelle.socialjukebox.domain.Playlist;
 import org.sauterelle.socialjukebox.domain.Song;
+import org.sauterelle.socialjukebox.repository.PlaylistRepository;
 import org.sauterelle.socialjukebox.repository.SongRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * REST controller for managing Song.
@@ -28,6 +32,9 @@ public class SongResource {
 
     @Inject
     private SongRepository songRepository;
+
+    @Inject
+    private PlaylistRepository playlistRepository;
 
     /**
      * POST  /songs -> Create a new song.
