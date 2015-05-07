@@ -110,6 +110,7 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
         }); 
 
     }
+    
     $scope.refreshSongs = function() {
         $http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
             $scope.songs = data.songs;
