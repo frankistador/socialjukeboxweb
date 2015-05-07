@@ -1,6 +1,6 @@
 <div class="row">
 
-	<h1> Ajouter des chansons dans la playlist {{playlistName}} </h1>
+	<h1>{{playlistName}} </h1>
 	
 	<div class="module">
 	
@@ -12,11 +12,11 @@
 
         <form class="form"> 
 
-        	<label for="title">Saisir un nom de chanson : </label>
+        	<label for="title" >Saisir un nom de chanson : </label>
             <input ng-model="title" type="text" name="title" id="title" size="40" />
 
             <br/><br/>
-            <button ng-click="postSong()" class="btn btn-primary">Envoyer </button>
+            <button ng-click="postSong()" class="btn btn-primary" >Ajouter </button>
 		</form>
 
     </div>

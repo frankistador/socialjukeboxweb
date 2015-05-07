@@ -11,7 +11,7 @@ angular.module('socialjukeboxwebApp')
    	});
    
    	function getPlaylist() {
-    	$http.get(window.location.pathname+"api/RunPlaylist/"+$scope.urlParam).success(function(data) {
+    	$http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
         	$scope.playlistName = data.name;
         })
 	};
