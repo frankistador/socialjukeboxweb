@@ -66,12 +66,15 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
 
     $scope.nextSong = function () {
         $scope.playlistLength = $scope.youtubeVideosIds.length - 1;
+        console.log("position : "+$scope.playlistLength + " iterator : "+$scope.videoIterator);
         if($scope.videoIterator < $scope.playlistLength)
         {
             $scope.videoIterator++;
             $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
         }
         else {
+            console.log("dernière chanson atteinte");
+            console.log($scope.playlistLength);
             $scope.videoIterator = 0;
             $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
         }
@@ -110,8 +113,7 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
             $scope.lecture = true;
         }
         if (data == "ENDED") {
-            $scope.videoIterator++;
-            $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
+            $scope.nextSong();
         }
     });
 
