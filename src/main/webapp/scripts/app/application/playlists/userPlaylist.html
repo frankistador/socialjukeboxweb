@@ -58,8 +58,8 @@
                 <td data-title="'Chanson'" >{{song.name}} </td>
                 <td > 
                     <button ng-click="selectSong(songs.indexOf(song))"  class="btn btn-success">
-                        <span class="glyphicon glyphicon-music"></span>&nbsp;
-                    </button> 
+                        <span ng-class="buttonClass[songs.indexOf(song)]"></span>&nbsp;
+                    </button>
                 </td>
                 <td > 
                    <button type="submit" ng-show="isOwnerOfPlaylist" ng-click="removeSong(songs.indexOf(song))"  class="btn btn-danger">

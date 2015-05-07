@@ -5,11 +5,15 @@ constant('YT_event', {
     STOP:            0,
     PLAY:            1,
     PAUSE:           2,
-    STATUS_CHANGE:   3
+    STATUS_CHANGE:   3,
+    ERROR:           -1
 });
 
 angular.module('socialjukeboxwebApp').
 controller('userPlaylistController', function ($scope, Principal, ngTableParams,$stateParams,$http,YT_event, $timeout,Playlist) {
+    $scope.buttonClass = [];
+    
+    //"glyphicon glyphicon-envelope"
     $scope.lecture= true;
     $scope.isOwnerOfPlaylist = false;
     $scope.songs = [];
@@ -62,19 +66,16 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
         height: 80
     };
 
-    $scope.YT_event = YT_event;
+    /*$scope.YT_event = YT_event;*/
 
     $scope.nextSong = function () {
         $scope.playlistLength = $scope.youtubeVideosIds.length - 1;
-        console.log("position : "+$scope.playlistLength + " iterator : "+$scope.videoIterator);
         if($scope.videoIterator < $scope.playlistLength)
         {
             $scope.videoIterator++;
             $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
         }
         else {
-            console.log("dernière chanson atteinte");
-            console.log($scope.playlistLength);
             $scope.videoIterator = 0;
             $scope.yt.videoid =  $scope.youtubeVideosIds[$scope.videoIterator];
         }
@@ -101,6 +102,10 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
         $scope.lecture = !$scope.lecture;
         this.$broadcast(yt_event);
     };
+    $scope.$on(YT_event.ERROR, function(event, data) {
+        $scope.nextSong();
+    });
+
     $scope.$on(YT_event.STATUS_CHANGE, function(event, data) {
         $scope.yt.playerStatus = data;
         if (data == "PAUSED") {
@@ -136,12 +141,15 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
     }
     $scope.refreshSongs = function() {
         $http.get(window.location.pathname+"api/playlists/"+$scope.urlParam).success(function(data) {
+            $scope.buttonClass = [];
             $scope.songs = data.songs;
             $scope.playlistName = data.name;
             $scope.youtubeVideosIds = new Array();
             for (var i = 0; i < data.songs.length; i++) {
                 $scope.youtubeVideosIds.push($scope.songs[i].url.split("=")[1]);
+                $scope.buttonClass[i] = "glyphicon glyphicon-music";
             }
+            $scope.buttonClass[$scope.videoIterator] = "glyphicon glyphicon-headphones";
         })
         $timeout( function(){ $scope.refreshSongs(); }, 3000);
     }
@@ -212,6 +220,12 @@ angular.module('socialjukeboxwebApp')
                                     break;
                             }
 
+                            scope.$apply(function() {
+                                scope.$emit(message.event, message.data);
+                            });
+                        },
+                        'onError': function(event) {
+                            var message = { event: YT_event.ERROR, data: "ERROR"}
                             scope.$apply(function() {
                                 scope.$emit(message.event, message.data);
                             });
