@@ -7,6 +7,7 @@ angular.module('socialjukeboxwebApp')
     		 $scope.account = account;
     		 $scope.isAuthenticated = Principal.isAuthenticated;
     	 });
+        $scope.baseUrl = window.location.pathname;
         $scope.playlists = [];
         $scope.songs = Song.query();
         $scope.page = 1;

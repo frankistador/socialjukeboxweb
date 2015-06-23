@@ -21,20 +21,19 @@
 					<h3 ng-switch-when="false"> Se connecter</h3>
 					<h3 ng-switch-when="true"> Se déconnecter</h3>
 					<br/>
-							  
-					<button ng-switch-when="false" ng-click="go('\login')" class="btn btn-primary">Se connecter</button>
+					<button ng-switch-when="false" ng-click="go('login')" class="btn btn-primary">Se connecter</button>
 					<button ng-switch-when="true" ng-click="logout()" class="btn btn-primary">Se déconnecter</button>
 					<br/><br/>
 						
 					<div ng-switch-when="false" class="create col-xs-4 col-md-offset-6 col-md-6">
-						<a href="\#register">Créer un compte</a>
+						<a href="{{baseUrl}}#/register">Créer un compte</a>
 					</div>
 				</div>
 					
                 <div class="connexion col-xs-12 col-md-6 col-md-offset-3">            
 					<h3> Description </h3>
 					<br/>
-					<p>Fini les soirées avec DJ !<br/> Authentifiez-vous, Créez une playlist et partager le lien à vos amis ! <br/> 
+					<p style="color: #DEB887">Fini les soirées avec DJ !<br/> Authentifiez-vous, créez une playlist et partagez le lien à vos amis ! <br/> 
                    Ils pourront ajouter librement des chansons à votre jukebox ! 
                    </p>
                 </div>

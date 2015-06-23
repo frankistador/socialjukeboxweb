@@ -74,7 +74,7 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
         height: 80
     };
 
-    /*$scope.YT_event = YT_event;*/
+    $scope.YT_event = YT_event;
 
     $scope.nextSong = function () {
         $scope.playlistLength = $scope.youtubeVideosIds.length - 1;

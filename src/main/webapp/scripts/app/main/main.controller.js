@@ -7,7 +7,7 @@ angular.module('socialjukeboxwebApp')
             $scope.account = account;
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
-        
+        $scope.baseUrl = window.location.pathname;
         $scope.go = function (path) {
 		  $location.path(path);
 		};
