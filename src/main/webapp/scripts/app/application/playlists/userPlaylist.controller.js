@@ -47,9 +47,10 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
         })
     };
     getPlaylist();
+    
+    $scope.YT_event = YT_event;
+    
     $scope.removeSong = function(index){
-        console.log("####################### PLAYLIST ");
-        console.log($scope.playlist);
 
         if ($scope.account.login == $scope.playlist.host.login){
             if ($scope.playlist.songs.length == 0) {
@@ -60,21 +61,32 @@ controller('userPlaylistController', function ($scope, Principal, ngTableParams,
 
             }
             if ($scope.playlist.songs.length >1) {
+            	
                 $scope.playlist.songs.splice(index,1);
+            	if($scope.videoIterator == index) {
+            		$scope.nextSong();
+            	}
+                
             }
-            else $scope.playlist.songs = [];
+            else{
+            	$scope.sendControlEvent(YT_event.STOP);
+            	$scope.playlist.songs = [];           	
+            }
+            
             Playlist.update($scope.playlist);
+
         }
         else {
             window.alert("only host is allowed to delete songs");
         }
     };
+    
     $scope.yt = {
         width: 500, 
         height: 80
     };
 
-    /*$scope.YT_event = YT_event;*/
+   
 
     $scope.nextSong = function () {
         $scope.playlistLength = $scope.youtubeVideosIds.length - 1;
